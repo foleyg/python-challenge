@@ -1,26 +1,18 @@
 import os
 import csv
 
-# insert code to show where the csv is here - according to terminal the path starts from Python-Challenge folder
 budget_data = os.path.join("PyBank", "Resources", "budget_data.csv")
 
-# creating variables to store the data I need to report on
-month_count = [] # generates a list named months
-pnl = [] # generates a list named pnl
-pnl_change = [] # generates a list named pnl_change
+month_count = [] 
+pnl = [] 
+pnl_change = [] 
 
-# open and read csv file'
 with open(budget_data, encoding='utf-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')
-    # read the header row first
     csv_header = next(csvreader)
     
-    # print(f"Header: {csv_header}" - we arent really printed so not necessary for the hw
-    # now i want to read each row of data after the header and iterate through the values/add them to empty lists
     for row in csvreader:
-        # add month to empty list
         month_count.append(row[0])
-        # add profit to empty list
         pnl.append(int(row[1]))
     
     for i in range(len(pnl)-1):
@@ -29,11 +21,9 @@ with open(budget_data, encoding='utf-8') as csvfile:
 greatest_increase = max(pnl_change)
 greatest_decrease = min(pnl_change)
 
-# find the date of these increases
 increase_date = pnl_change.index(max(pnl_change))+1
 decrease_date = pnl_change.index(min(pnl_change))+1
 
-# find the average monthly change
 average = round(sum(pnl_change)/len(pnl_change),2)
 
       
