@@ -45,12 +45,15 @@ print(f"Average Change: ${average}")
 print(f"Greatest Increase in Profits: {month_count[increase_date]} ${greatest_increase}")
 print(f"Greatest Decrease in Profits: {month_count[decrease_date]} ${greatest_decrease}")
 
-output_file = os.path.join(".", 'output.txt')
+output_file = os.path.join("PyBank", "Resources", 'output.txt')
 with open(output_file, "w") as new:
-    new.write(f"Financial Analysis\n")
-    new.write(f"-----------------------\n")
-    new.write(f"Total Months: {len(month_count)}")
-    new.write(f"Total PNL: ${sum(pnl)}")
-    new.write(f"Average Change: ${average}")
-    new.write(f"Greatest Increase in Profits: {month_count[increase_date]} ${greatest_increase}")
-    new.write(f"Greatest Decrease in Profits: {month_count[decrease_date]} ${greatest_decrease}")
+    msg = (
+      f"Financial Analysis\n"
+      f"-----------------------\n"
+      f"Total Months: {len(month_count)}"
+      f"Total PNL: ${sum(pnl)}"
+      f"Average Change: ${average}"
+      f"Greatest Increase in Profits: {month_count[increase_date]} ${greatest_increase}"
+      f"Greatest Decrease in Profits: {month_count[decrease_date]} ${greatest_decrease}"  
+    )
+    new.write(msg)
