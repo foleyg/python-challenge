@@ -21,8 +21,8 @@ with open(budget_data, encoding='utf-8') as csvfile:
 greatest_increase = max(pnl_change)
 greatest_decrease = min(pnl_change)
 
-increase_date = pnl_change.index(max(pnl_change))+1
-decrease_date = pnl_change.index(min(pnl_change))+1
+increase_date = pnl_change.index(greatest_increase)+1
+decrease_date = pnl_change.index(greatest_decrease)+1
 
 average = round(sum(pnl_change)/len(pnl_change),2)
 
