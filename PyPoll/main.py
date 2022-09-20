@@ -43,7 +43,6 @@ with open(output_file, 'w') as new:
         print(candidate_result)
         new.write(candidate_result)
 
-        # find winning vote count, candidate and percentage
         if (votes > winner_vote_count) and (vote_percent > winner_vote_percent):
             winner_vote_count = votes
             winner = candidate
