@@ -3,12 +3,12 @@ import csv
 
 election_data = os.path.join("PyPoll", "Resources", "election_data.csv")
 
-vote_count = 0                  # initialize vote counter
-candidate_options = []          # dictionary for candidate options     
-candidate_vote_count = {}       # candidate vote counter
-winner_vote_count = 0           # for tracking vote count of winner
-candidate_vote_percent = 0      # for tracking vote percentage for the winner
-winner = ""
+vote_count = 0                  # total_votes
+candidate_options = []          # candidate_options   
+candidate_vote_count = {}       # candidate_votes
+winner_vote_count = 0           # winning_count
+winner_vote_percent = 0         # winning_percentage
+winner = ""                     # winning_candidate
 
 with open(election_data, encoding='utf-8') as csvfile:      # opens election results and reads the file
     csvreader = csv.reader(csvfile, delimiter=',')          
@@ -35,6 +35,13 @@ with open(output_file, 'w') as new:
     )
     print(election_results, end="")
     new.write(election_results)
+
+for candidate in candidate_vote_count:
+    votes = candidate_vote_count[candidate]
+    vote_percent = float(votes) / float(vote_count) * 100
+    candidate_result = ( f"{candidate}: {vote_percent:.3f}% ({votes})\n")
+
+    print(candidate_result)
 
 
 
