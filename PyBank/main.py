@@ -28,7 +28,7 @@ average = round(sum(pnl_change)/len(pnl_change),2)
 
       
 print("Financial Analysis")
-print("-"*20)
+print("-"*25)
 print(f"Total Months: {len(month_count)}")
 print(f"Total PNL: ${sum(pnl)}")
 print(f"Average Change: ${average}")
