@@ -36,16 +36,27 @@ with open(output_file, 'w') as new:
     print(election_results, end="")
     new.write(election_results)
 
-for candidate in candidate_vote_count:
-    votes = candidate_vote_count[candidate]
-    vote_percent = float(votes) / float(vote_count) * 100
-    candidate_result = ( f"{candidate}: {vote_percent:.3f}% ({votes})\n")
+    for candidate in candidate_vote_count:
+        votes = candidate_vote_count[candidate]
+        vote_percent = float(votes) / float(vote_count) * 100
+        candidate_result = (f"{candidate}: {vote_percent:.3f}% ({votes})\n"
+        )
+        print(candidate_result)
+        new.write(candidate_result)
 
-    print(candidate_result)
+        # find winning vote count, candidate and percentage
+        if (votes > winner_vote_count) and (vote_percent > winner_vote_percent):
+            winner_vote_count = votes
+            winner = candidate
+            winner_vote_percent = vote_percent
+    
+    msg = (
+        f"--------------------\n"
+        f"Winner: {winner}\n"
+    )
 
-
-
-
+    print(msg)
+    new.write(msg)
 
 
 # instead of using if/in structure, look to use a dictionary (key)
