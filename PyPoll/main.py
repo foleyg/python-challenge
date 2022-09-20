@@ -3,16 +3,16 @@ import csv
 
 election_data = os.path.join("PyPoll", "Resources", "election_data.csv")
 
-vote_count = 0                  # total_votes
-candidate_options = []          # candidate_options   
-candidate_vote_count = {}       # candidate_votes
-winner_vote_count = 0           # winning_count
-winner_vote_percent = 0         # winning_percentage
-winner = ""                     # winning_candidate
+vote_count = 0                  
+candidate_options = []          
+candidate_vote_count = {}       
+winner_vote_count = 0           
+winner_vote_percent = 0         
+winner = ""                     
 
-with open(election_data, encoding='utf-8') as csvfile:      # opens election results and reads the file
+with open(election_data, encoding='utf-8') as csvfile:
     csvreader = csv.reader(csvfile, delimiter=',')          
-    cvs_header = next(csvreader)                            # reads the header row
+    cvs_header = next(csvreader)                            
 
     for row in csvreader:
         vote_count += 1
@@ -24,7 +24,6 @@ with open(election_data, encoding='utf-8') as csvfile:      # opens election res
         
         candidate_vote_count[candidate] += 1
 
-# now saving results to the text file
 output_file = os.path.join("PyPoll", "Analysis", "Analysis.txt")
 with open(output_file, 'w') as new:
     election_results = (
@@ -59,11 +58,3 @@ with open(output_file, 'w') as new:
     new.write(msg)
 
 
-# instead of using if/in structure, look to use a dictionary (key)
-
-# # printing lines
-# print("Election Results")
-# print("-"*20)
-# print(f"Total Votes: {vote_count}")
-# # print(f"Total Votes: {len(vote_counter)}")
-# print("-"*20)
