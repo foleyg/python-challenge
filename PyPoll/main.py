@@ -32,7 +32,7 @@ with open(output_file, 'w') as new:
         f"Total Votes: {vote_count}\n"
         f"---------------------\n"
     )
-    print(election_results, end="")
+    print(election_results)
     new.write(election_results)
 
     for candidate in candidate_vote_count:
